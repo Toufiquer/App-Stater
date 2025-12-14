@@ -22,9 +22,10 @@ export default function Page() {
           {/* Header Accent Line */}
           <div className="h-2 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
           
+          <div className="text-4xl">Update Home Page</div>
           {/* Components */}
-          <NotificationManager />
-          <InstallPrompt />
+          {/* <NotificationManager />
+          <InstallPrompt /> */}
           
         </div>
       </motion.div>
