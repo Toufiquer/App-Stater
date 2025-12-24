@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion' 
 import NotificationManager from '@/components/common/stater/NotificationManager'
 import InstallPrompt from '@/components/common/stater/InstallPrompt'
+import { Button } from '@/components/ui/button'
+import { sendNotification } from '@/components/common/stater/actions'
 
 export default function Page() {
   return (
@@ -18,16 +20,10 @@ export default function Page() {
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className="w-full max-w-lg relative z-10"
       >
-        <div className="bg-neutral-900/60 backdrop-blur-2xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden">
-          {/* Header Accent Line */}
-          <div className="h-2 w-full bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500" />
-          
-          <div className="text-4xl">Update Home Page</div>
-          {/* Components */}
-          {/* <NotificationManager />
-          <InstallPrompt /> */}
-          
-        </div>
+        <div className="text-6xl text-center">Home Page</div>
+        <Button onClick={()=>sendNotification("Send From Home Page")}>Send Notification</Button>
+        <NotificationManager />
+        <InstallPrompt />
       </motion.div>
     </div>
   )

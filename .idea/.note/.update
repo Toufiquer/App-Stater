@@ -1,5 +1,11 @@
-1. public/icon-192x192.png
-2. public/icon-512x512.png
+1. public/icon-144x144.png
+2. public/icon-192x192.png
+3. public/icon-412x412.png
+4. public/icon-412x915.png
+5. public/icon-512x512.png
+6. public/icon-1280x720.png
+7. public/icon.png
+8. public/badge.png
 
-3. src/app/favicon.ico
-4. src/app/layout.tsx
+1. src/app/favicon.ico
+2. src/app/layout.tsx
