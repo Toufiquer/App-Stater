@@ -25,12 +25,12 @@ export async function GET(req: Request) {
 //    const tokenResponse = handleTokenVerify(req);
 //   if (tokenResponse) return tokenResponse;
 
-  const wantToAccess: IWantAccess = {
-    db_name: 'Posts',
-    access: 'read',
-  };
-  const isAccess = await isUserHasAccessByRole(wantToAccess);
-  if (isAccess) return isAccess;
+  // const wantToAccess: IWantAccess = {
+  //   db_name: 'Posts',
+  //   access: 'read',
+  // };
+  // const isAccess = await isUserHasAccessByRole(wantToAccess);
+  // if (isAccess) return isAccess;
   
     const id = new URL(req.url).searchParams.get('id');
     const result: IResponse = id
@@ -47,12 +47,12 @@ export async function POST(req: Request) {
 //    const tokenResponse = handleTokenVerify(req);
 //    if (tokenResponse) return tokenResponse;
 
-  const wantToAccess: IWantAccess = {
-    db_name: 'Posts',
-    access: 'create',
-  };
-  const isAccess = await isUserHasAccessByRole(wantToAccess);
-  if (isAccess) return isAccess;
+  // const wantToAccess: IWantAccess = {
+  //   db_name: 'Posts',
+  //   access: 'create',
+  // };
+  // const isAccess = await isUserHasAccessByRole(wantToAccess);
+  // if (isAccess) return isAccess;
 
     const result = await createPost(req);
     return formatResponse(result.data, result.message, result.status);
@@ -66,12 +66,12 @@ export async function PUT(req: Request) {
 //    const tokenResponse = handleTokenVerify(req);
 //    if (tokenResponse) return tokenResponse;
 
-  const wantToAccess: IWantAccess = {
-    db_name: 'Posts',
-    access: 'update',
-  };
-  const isAccess = await isUserHasAccessByRole(wantToAccess);
-  if (isAccess) return isAccess;
+  // const wantToAccess: IWantAccess = {
+  //   db_name: 'Posts',
+  //   access: 'update',
+  // };
+  // const isAccess = await isUserHasAccessByRole(wantToAccess);
+  // if (isAccess) return isAccess;
 
     const isBulk = new URL(req.url).searchParams.get('bulk') === 'true';
     const result = isBulk
@@ -90,12 +90,12 @@ export async function DELETE(req: Request) {
 //    if (tokenResponse) return tokenResponse;
 
 
-  const wantToAccess: IWantAccess = {
-    db_name: 'Posts',
-    access: 'delete',
-  };
-  const isAccess = await isUserHasAccessByRole(wantToAccess);
-  if (isAccess) return isAccess;
+  // const wantToAccess: IWantAccess = {
+  //   db_name: 'Posts',
+  //   access: 'delete',
+  // };
+  // const isAccess = await isUserHasAccessByRole(wantToAccess);
+  // if (isAccess) return isAccess;
 
     const isBulk = new URL(req.url).searchParams.get('bulk') === 'true';
     const result = isBulk
