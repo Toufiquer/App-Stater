@@ -21,6 +21,7 @@ export const apiSlice = createApi({
     'tagTypeSessions',
     'tagTypePageBuilder',
     'tagTypeVerifications',
+    'tagTypeFormSubmission',
     'tagTypeDashboardBuilder',
     'tagTypeAccessManagements',
     'FootertagTypePageBuilder',

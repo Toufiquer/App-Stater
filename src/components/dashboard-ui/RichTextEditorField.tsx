@@ -135,7 +135,6 @@ export default function RichTextEditorField({ id, value, onChange, label, classN
       Highlight,
     ],
     content: value,
-    immediatelyRender: false,
     editorProps: {
       attributes: {
         class:
