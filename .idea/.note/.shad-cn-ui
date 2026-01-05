@@ -19,3 +19,6 @@ bunx --bun shadcn@latest add card
 bunx --bun shadcn@latest add sheet
 bunx --bun shadcn@latest add table
 bunx --bun shadcn@latest add tabs
+bunx --bun shadcn@latest add separator
+bunx --bun shadcn@latest add tooltip
+bunx --bun shadcn@latest add slider
