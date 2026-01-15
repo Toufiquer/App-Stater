@@ -78,7 +78,7 @@ export default function AssetManagementPage() {
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
                     className={`
-                    relative flex items-center gap-2 px-5 py-2.5 rounded-xl transition-all duration-300 border
+                    relative flex items-center gap-2 px-5 py-2.5 rounded-sm transition-all duration-300 border
                     ${
                       isActive
                         ? 'bg-green-400/10 border-white text-white scale-105'

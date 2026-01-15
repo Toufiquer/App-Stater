@@ -74,7 +74,7 @@ const InternalImageVault = ({ onImageSelect, selectedImage }: InternalImageDialo
 
   return (
     <div className="flex flex-col h-[85vh] md:h-[70vh] backdrop-blur-[150px] rounded-xl overflow-hidden border border-white/10 bg-black/40">
-      <DialogHeader className="p-6 border-b border-white/5">
+      <DialogHeader className="p-6 border-b border-white/5 text-white">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="relative flex-1 max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20" />
@@ -117,7 +117,11 @@ const InternalImageVault = ({ onImageSelect, selectedImage }: InternalImageDialo
                       transition={{ delay: idx * 0.03 }}
                       onClick={() => onImageSelect(item.url)}
                       className={`relative aspect-square rounded-2xl overflow-hidden border-2 cursor-pointer transition-all duration-500 group
-                      ${isSelected ? 'border-indigo-500 scale-95 shadow-[0_0_40px_rgba(99,102,241,0.3)]' : 'border-white/5 hover:border-white/20 hover:scale-105'}
+                      ${
+                        isSelected
+                          ? 'border-indigo-500 scale-95 shadow-[0_0_40px_rgba(99,102,241,0.3)]'
+                          : 'border-white/5 hover:border-white/20 hover:scale-105'
+                      }
                     `}
                     >
                       <Image
@@ -188,7 +192,7 @@ export default function ImageUploadManagerSingle({
               e.stopPropagation();
               onChange('');
             }}
-            className="h-6 text-red-400/60 hover:text-red-400 text-[9px] font-black uppercase tracking-widest bg-red-500/5 hover:bg-red-500/10"
+            className="h-6 text-rose-200 cursor-pointer hover:text-red-400 text-[9px] border-rose-500 border font-black uppercase tracking-widest bg-red-500/5 hover:bg-red-500/10"
           >
             <X className="w-3 h-3 mr-1" /> Remove
           </Button>
@@ -221,7 +225,7 @@ export default function ImageUploadManagerSingle({
             )}
           </div>
         </DialogTrigger>
-        <DialogContent className="bg-transparent border-none p-0 shadow-none overflow-hidden max-w-4xl w-[95vw]">
+        <DialogContent className="bg-transparent border-none p-0 shadow-none overflow-hidden max-w-4xl w-[95vw] text-white">
           <InternalImageVault
             selectedImage={value}
             onImageSelect={url => {

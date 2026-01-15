@@ -75,31 +75,23 @@ const InternalImageVault = ({ onImageToggle, selectedImages }: InternalImageDial
   return (
     <div className="flex flex-col h-[85vh] md:h-[75vh] border border-slate-100/50 rounded-xl backdrop-blur-3xl">
       <DialogHeader className="p-8 border-b border-white/5  ">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 w-full">
           <div className="hidden">
-            <DialogTitle className="text-2xl font-black uppercase tracking-tighter italic bg-gradient-to-r from-white to-white/40 bg-clip-text text-transparent"></DialogTitle>
-            <DialogDescription className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30"></DialogDescription>
+            <DialogTitle></DialogTitle>
+            <DialogDescription></DialogDescription>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 justify-between">
-            <div className="relative group">
+          <div className="flex flex-wrap items-center gap-4 justify-between w-full">
+            <div className="relative group w-full">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20 group-focus-within:text-indigo-400 transition-colors" />
               <input
                 type="text"
                 placeholder="Search Assets..."
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                className="bg-white/5 border border-white/10 rounded-xl pl-9 pr-4 py-2 text-[10px] font-black uppercase tracking-widest text-white focus:outline-none focus:border-indigo-500/50 w-full md:w-64 transition-all"
+                className="bg-white/5 border border-white/10 rounded-xl pl-9 pr-4 py-2 text-[10px] font-black uppercase tracking-widest text-white focus:outline-none focus:border-indigo-500/50 w-full transition-all"
               />
             </div>
-
-            <label className="cursor-pointer group">
-              <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={isUploadingLocal || isAdding} />
-              <div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[10px] font-black uppercase tracking-widest hover:bg-indigo-500/20 transition-all shadow-[0_0_20px_rgba(99,102,241,0.1)]">
-                {isUploadingLocal || isAdding ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <UploadCloud className="w-3.5 h-3.5" />}
-                Upload
-              </div>
-            </label>
           </div>
         </div>
       </DialogHeader>
@@ -128,7 +120,11 @@ const InternalImageVault = ({ onImageToggle, selectedImages }: InternalImageDial
                       transition={{ delay: idx * 0.02 }}
                       onClick={() => onImageToggle(item.url)}
                       className={`relative aspect-square rounded-2xl overflow-hidden border-2 cursor-pointer transition-all duration-500 group
-                      ${isSelected ? 'border-emerald-500/50 scale-95 shadow-[0_0_30px_rgba(16,185,129,0.2)]' : 'border-white/5 hover:border-white/20 hover:scale-105'}
+                      ${
+                        isSelected
+                          ? 'border-emerald-500/50 scale-95 shadow-[0_0_30px_rgba(16,185,129,0.2)]'
+                          : 'border-white/5 hover:border-white/20 hover:scale-105'
+                      }
                     `}
                     >
                       <Image
@@ -166,6 +162,15 @@ const InternalImageVault = ({ onImageToggle, selectedImages }: InternalImageDial
           </div>
         )}
       </ScrollArea>
+      <div className="w-full flex items-end justify-end p-2">
+        <label className="cursor-pointer group">
+          <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} disabled={isUploadingLocal || isAdding} />
+          <div className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[10px] font-black uppercase tracking-widest hover:bg-indigo-500/20 transition-all shadow-[0_0_20px_rgba(99,102,241,0.1)]">
+            {isUploadingLocal || isAdding ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <UploadCloud className="w-3.5 h-3.5" />}
+            Upload
+          </div>
+        </label>
+      </div>
     </div>
   );
 };
@@ -194,21 +199,21 @@ export default function ImageUploadManager({
       <div className="flex items-center justify-between px-1">
         <div className="space-y-1">
           <h4 className="text-sm text-white/40 ">{label}</h4>
-          <p className="text-[8px] font-bold uppercase tracking-widest text-white/10">{value.length} Items Selected</p>
+          <p className="text-[8px] font-bold uppercase tracking-widest text-white/30">{value.length} Items Selected</p>
         </div>
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
-            <Button variant="outlineGlassy" size="sm">
+            <Button variant="outlineGlassy" size="sm" className="cursor-pointer">
               <Plus className="w-3.5 h-3.5" /> Select
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-5xl bg-transparent border-none p-0 shadow-none ">
+          <DialogContent className="max-w-5xl bg-transparent border-none p-0 shadow-none text-white">
             <InternalImageVault selectedImages={value} onImageToggle={toggleImage} />
           </DialogContent>
         </Dialog>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-5 p-6 rounded-4xl bg-slate-950/20 border border-white/5 backdrop-blur-3xl  md:h-[35vh] transition-all">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 p-6 rounded-4xl bg-slate-950/20 border border-white/5 backdrop-blur-3xl  md:h-[35vh] transition-all">
         <AnimatePresence mode="popLayout">
           {value.map((url, idx) => (
             <motion.div
